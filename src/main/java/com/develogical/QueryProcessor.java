@@ -14,7 +14,8 @@ public class QueryProcessor {
         }
 
         if (lowerVersion.contains("which of the following numbers is the largest:")) {
-            String suffix = lowerVersion.split(":")[1];
+            String[] sections = lowerVersion.split(":");
+            String suffix = sections[sections.length - 1];
             Integer best = 0;
             for (String x : suffix.split(",")) {
                 Integer num = Integer.parseInt(x);
