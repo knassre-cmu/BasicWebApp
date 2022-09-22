@@ -1,6 +1,8 @@
 package com.develogical;
 
 import java.lang.Math;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class QueryProcessor {
 
@@ -40,6 +42,15 @@ public class QueryProcessor {
             }
             return String.valueOf(best);
         }
+
+        Pattern multiplicationPattern = Pattern.compile(".* (\\d+) multiplied by (\\d+) .*");
+        Matcher match = multiplicationPattern.matcher(lowerVersion);
+        if (match.matches()) {
+            return String.valueOf(Integer.parseInt(match.group(1)) * Integer.parseInt(match.group(0)));
+        }
+
         return "";
+
+
     }
 }
