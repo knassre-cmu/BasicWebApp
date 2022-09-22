@@ -43,10 +43,10 @@ public class QueryProcessor {
             return String.valueOf(best);
         }
 
-        Pattern multiplicationPattern = Pattern.compile(".* (\\d+) multiplied by (\\d+) .*");
+        Pattern multiplicationPattern = Pattern.compile(".* (\\d+) multiplied by (\\d+).*");
         Matcher match = multiplicationPattern.matcher(lowerVersion);
         if (match.matches()) {
-            return String.valueOf(Integer.parseInt(match.group(1)) * Integer.parseInt(match.group(0)));
+            return String.valueOf(Integer.parseInt(match.group(1)) * Integer.parseInt(match.group(2)));
         }
 
         return "";
