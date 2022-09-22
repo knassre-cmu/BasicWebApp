@@ -41,6 +41,16 @@ public class QueryProcessorTest {
     }
 
     @Test
+    public void addTest() throws Exception {
+        assertThat(queryProcessor.process("what is 6 plus 7"), containsString("13"));
+    }
+
+    @Test
+    public void minusTest() throws Exception {
+        assertThat(queryProcessor.process("what is 30 minus 7"), containsString("23"));
+    }
+
+    @Test
     public void multiplyTest() throws Exception {
         assertThat(queryProcessor.process("what is 6 multiplied by 7"), containsString("42"));
     }

@@ -43,11 +43,24 @@ public class QueryProcessor {
             return String.valueOf(best);
         }
 
-        Pattern multiplicationPattern = Pattern.compile(".* (\\d+) multiplied by (\\d+).*");
-        Matcher match = multiplicationPattern.matcher(lowerVersion);
+        Pattern pattern = Pattern.compile(".* (\\d+) multiplied by (\\d+).*");
+        Matcher match = pattern.matcher(lowerVersion);
         if (match.matches()) {
             return String.valueOf(Integer.parseInt(match.group(1)) * Integer.parseInt(match.group(2)));
         }
+
+        pattern = Pattern.compile(".* (\\d+) plus (\\d+).*");
+        match = pattern.matcher(lowerVersion);
+        if (match.matches()) {
+            return String.valueOf(Integer.parseInt(match.group(1)) + Integer.parseInt(match.group(2)));
+        }
+
+        pattern = Pattern.compile(".* (\\d+) minus (\\d+).*");
+        match = pattern.matcher(lowerVersion);
+        if (match.matches()) {
+            return String.valueOf(Integer.parseInt(match.group(1)) - Integer.parseInt(match.group(2)));
+        }
+
 
         return "";
 
